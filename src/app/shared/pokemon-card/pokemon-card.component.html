@@ -1,0 +1,16 @@
+<mat-expansion-panel (opened)="panelOpenState = true"
+                        (closed)="panelOpenState = false">
+    <mat-expansion-panel-header>
+    <mat-panel-title>
+        {{pokeInfo?.name}}
+    </mat-panel-title>
+    <img src="{{pokeInfo?.sprites?.front_default===null?'https://i.etsystatic.com/14825908/r/il/850fbd/1818252638/il_794xN.1818252638_e8ii.jpg':pokeInfo?.sprites?.front_default}}" alt="">
+    <div class="type_container">
+        <img *ngFor="let type of pokeInfo?.types" class="type_img" src="{{type.type.url}}" alt="">
+    </div>
+    <mat-panel-description>
+        #{{pokeInfo?.id}} en Pokedex Nacional
+    </mat-panel-description>
+</mat-expansion-panel-header>
+<p>Su primera aparición es en {{pokeInfo?.version_group?.name}}</p>
+</mat-expansion-panel>

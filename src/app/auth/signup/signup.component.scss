@@ -1,0 +1,40 @@
+.login_container{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    margin-top: 20px;
+}
+form{    
+    display: flex;
+    flex-direction: column;
+    padding: 20px;
+    width: 50%;
+    mat-form-field{
+        margin-bottom: .8rem;
+    }
+    .buttons_form{
+        display: flex;
+        justify-content:space-around;
+        align-items: center;
+        gap: 20px;
+        button{
+            width: 100%;
+        }
+    }
+}
+
+@media (max-width: 768px) {
+    form{
+        width: 90%;
+
+        .buttons_form{
+            flex-direction: column;
+            gap: 10px;
+
+            button{
+                width: 100%;
+            }
+        }
+    }
+  }

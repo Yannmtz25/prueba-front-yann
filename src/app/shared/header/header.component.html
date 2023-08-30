@@ -1,0 +1,15 @@
+<header>
+    
+        <img src="https://www.bambu-mobile.com/wp-content/uploads/2022/06/logo-bambu-mobile-white.svg" alt="">
+        <div>
+            <h1>Prueba de Front - Yann Luis</h1>
+        </div>
+
+        <div class="header_buttons_cont">
+            <button mat-raised-button color="primary" routerLink="/sort" *ngIf="getUrl()=== '/list' && readLocalStorageValue('logged')=== 'true'">Cadena de números</button>
+            <button mat-raised-button color="primary" routerLink="/list" *ngIf="getUrl()!== '/list' && readLocalStorageValue('logged')=== 'true'">Lista de Pokémons</button>
+            <button mat-raised-button color="warn" (click)="logoutButton()" *ngIf="readLocalStorageValue('logged')=== 'true'">Cerrar Sesión</button>
+            <button mat-raised-button color="primary" routerLink="/" *ngIf="readLocalStorageValue('logged')!== 'true' && getUrl()!== '/'">Iniciar Sesión</button>
+        </div>
+        
+</header>

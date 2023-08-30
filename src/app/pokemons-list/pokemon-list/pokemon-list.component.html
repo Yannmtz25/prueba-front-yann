@@ -1,0 +1,36 @@
+<div class="list_module">
+    <form class="search_cont" [formGroup]="searchForm">
+        <mat-form-field class="example-form-field">
+            <mat-label>Buscar por nombre</mat-label>
+            <input matInput type="text" [(ngModel)]="value" formControlName='pokeName' (change)="getPoke()">
+            <button *ngIf="value" matSuffix mat-icon-button aria-label="Clear" (click)="value=''">
+              <mat-icon>close</mat-icon>
+            </button>
+        </mat-form-field>
+        <div class="searchButtons_cont">
+            <button mat-raised-button color="primary" type="submit">Buscar</button>
+            <button mat-raised-button color="warn" type="button" (click)="getPokeList(true)">Regresar</button>
+        </div>
+    </form>
+    <mat-accordion class="list_cont" *ngIf="pokeData!==null && pokeUnique===null">
+        <div *ngFor="let poke of pokeData.results">
+            <app-pokemon-card [apiUrl]="poke.url"></app-pokemon-card>
+        </div>
+    </mat-accordion>
+    <mat-accordion class="list_cont" *ngIf="pokeData===null && pokeUnique!==null">
+        <div>
+            <app-pokemon-card [pokeDataSearch]="pokeUnique"></app-pokemon-card>
+        </div>
+    </mat-accordion>
+    <mat-paginator [length]="count"
+                  [pageSize]="20"
+                  aria-label="Seleccionar Página"
+                  [hidePageSize]="true"
+                  (page)="handlePageEvent($event)"
+                  [length]="count"
+                  [showFirstLastButtons]="true"
+                  *ngIf="pokeData!==null && pokeUnique===null"
+                  [pageIndex]="pageIndex"
+                  >
+    </mat-paginator>
+</div>

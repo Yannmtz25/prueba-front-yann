@@ -1,0 +1,56 @@
+<div class="login_container">
+    <form class="example-form" [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+        <mat-form-field class="example-full-width">
+            <mat-label>Nombre</mat-label>
+            <input matInput formControlName='name' type="text">
+            <mat-error class="error_msg" *ngIf="loginForm.get('name')?.hasError('required')">
+                El nombre es obligatorio.
+            </mat-error>
+        </mat-form-field>
+        <mat-form-field class="example-full-width">
+            <mat-label>Fecha de nacimiento</mat-label>
+            <input matInput placeholder="Ex. example@email.com" type="date" formControlName='date'>
+            <mat-error class="error_msg" *ngIf="loginForm.get('date')?.hasError('required')">
+                La fecha es obligatoria.
+            </mat-error>
+        </mat-form-field>
+        <mat-form-field class="example-full-width">
+            <mat-label>Télefono</mat-label>
+            <input matInput placeholder="Ex. 2225558888" type="tel" formControlName='tel'>
+            <mat-error class="error_msg" *ngIf="loginForm.get('tel')?.hasError('required')">
+                El télefono es obligatorio.
+            </mat-error>
+            <mat-error class="error_msg" *ngIf="loginForm.get('tel')?.hasError('pattern')">
+                Debes ingresar entre 10 y 15 dígitos.
+            </mat-error>
+        </mat-form-field>
+        <mat-form-field class="example-full-width">
+            <mat-label>Email</mat-label>
+            <input matInput placeholder="Ex. example@email.com" formControlName='email' type="email">
+            <mat-error class="error_msg" *ngIf="loginForm.get('email')?.hasError('required')">
+                E-mail es obligatorio.
+            </mat-error>
+            <mat-error class="error_msg" *ngIf="loginForm.get('email')?.hasError('pattern')">
+                No es un E-mail.
+            </mat-error>
+        </mat-form-field>
+    
+        <mat-form-field class="example-full-width">
+            <mat-label>Password</mat-label>
+            <input matInput type="password" formControlName='password'>
+            <mat-error class="error_msg" *ngIf="loginForm.get('password')?.hasError('required')">
+                La contraseña es obligatoria.
+            </mat-error>
+            <mat-error class="error_msg" *ngIf="loginForm.get('password')?.hasError('minlength')">
+                La contraseña debe contener al menos 6 carácteres.
+            </mat-error>
+        </mat-form-field>
+        
+          
+        <div class="buttons_form">
+            <button mat-raised-button color="primary" [disabled]="!loginForm.valid">Crear Usuario</button>
+            <button mat-raised-button color="primary" routerLink="/" type="button">Regresar</button>
+        </div>
+        
+    </form>    
+</div>
